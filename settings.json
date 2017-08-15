@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "files.associations": {
+        "*.js": "javascriptreact"
+    },
+    "scss.lint.boxModel": "warning",
+    "scss.lint.duplicateProperties": "warning",
+    "css.colorDecorators.enable": true,
+    "scss.colorDecorators.enable": true,
+    "eslint.enable": false
+}

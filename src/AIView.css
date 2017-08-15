@@ -1,0 +1,46 @@
+.view {
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 350px;
+  padding: 10px;
+  transition: all 1s ease-out; }
+  .view.view-dead {
+    background-color: #8c0000;
+    opacity: 0.5; }
+  .view-graph {
+    position: relative;
+    display: flex;
+    background-color: #1b2623;
+    border-radius: 3px;
+    border: 3px solid #444; }
+    .view-graph div {
+      height: 3em;
+      transition: flex-grow 0.3s ease-in-out; }
+    .view-graph .label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0.5;
+      color: #ccc;
+      line-height: 3em;
+      text-align: center; }
+    .view-graph .graph {
+      background-color: #f00; }
+    .view-graph .line {
+      min-width: 3px;
+      background-color: #eee; }
+    .view-graph .empty {
+      flex: 100; }
+  .view-money {
+    height: 3em; }
+    .view-money .label {
+      opacity: 1; }
+      .view-money .label.money-negative {
+        color: #c00; }
+  .view-hunger .graph {
+    background-color: #600; }
+  .view-bladder .graph {
+    background-color: #066; }
+  .view-fatigue .graph {
+    background-color: #226; }

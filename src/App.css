@@ -1,0 +1,17 @@
+.bp {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000c09;
+  color: #eee;
+  line-height: 20px;
+  padding: 15px 30px;
+  display: flex; }
+  .bp .text {
+    text-align: right;
+    flex-grow: 100; }
+
+main {
+  margin-bottom: 80px;
+  padding: 20px; }
