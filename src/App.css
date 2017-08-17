@@ -14,4 +14,15 @@
 
 main {
   margin-bottom: 80px;
-  padding: 20px; }
+  padding: 20px;
+  display: flex; }
+
+.generation {
+  border-left: 1px dashed #fff;
+  padding: 0 20px; }
+  .generation:first-of-type {
+    border: 0;
+    padding-left: 0; }
+  .generation h2 {
+    color: #eee;
+    text-align: center; }

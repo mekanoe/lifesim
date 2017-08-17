@@ -1,8 +1,9 @@
 .view {
   background-color: rgba(0, 0, 0, 0.5);
-  max-width: 350px;
+  min-width: 350px;
   padding: 10px;
-  transition: all 1s ease-out; }
+  transition: all 1s ease-out;
+  margin: 5px; }
   .view.view-dead {
     background-color: #8c0000;
     opacity: 0.5; }

@@ -48,7 +48,7 @@ const store = getStore({
   tick_money: 0.0
 })
 
-const aiNet = new AINetSVM()
+const aiNet = new AINetDT()
 
 const trainAI = async (action) => {
   aiNet.train({ input: store.$.toJS(), output: action })
@@ -59,7 +59,7 @@ const map = (action) => {
 }
 
 const unmap = (action) => {
-  console.log(action)
+  // console.log(action)
   return actionMap[Object.keys(actionMap)[action]]
 }
 
@@ -168,13 +168,15 @@ const onTick = () => {
       aiReady = true
       // resetSim()
       // return
+
+      console.log(aiNet.dump())
     }
     try {
       let aiAction = aiNet.fetch(store.$.toJS())
       // console.log(`DUMB ACTION:`, action)
       action = unmap(aiAction)
 
-      console.log(`  AI ACTION:`, action)
+      // console.log(`  AI ACTION:`, action)
       
       // for (let a of Object.keys(actionMap)) {
       //   // if (a === 'money') continue
@@ -270,7 +272,7 @@ const onTickEnd = () => {
 }
 
 const sendState = () => {
-  postMessage(store.$.toJS())
+  postMessage({ msg: 'state', store: store.$.toJS() })
 }
 
 const tick = () => {
@@ -291,7 +293,21 @@ this.onmessage = ({action, data}) => {
   }
 }
 
+const randomizeState = () => {
+  const motives = Object.keys(DEFAULT_TICK)
+
+  for (let m of motives) {
+    if (m === 'money') continue
+
+    const nv = Math.round(Math.random() * 193) - 97 // -193 <-> 193
+
+    store.set(`stat_${m}`, nv)
+  }
+
+  sendState()
+}
+
+randomizeState()
 tick()
 
-setInterval(sendState, 1000 / 24)
-
+setInterval(sendState, 1000 / 10)

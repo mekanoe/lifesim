@@ -32,7 +32,14 @@ export default class AIView extends Component {
 
   handleMessage ({data}) {
     // console.log('GOT SIMULATION DATA', data)
-    this.setState(data)
+
+    switch (data.msg) {
+      case 'state':
+        this.setState(data.store)
+        break
+      default:
+        console.warn('unknown msg', data)
+    }
   }
 
   render () {

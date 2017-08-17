@@ -20,6 +20,10 @@ class AINet {
   fetch (input) {
     return 'idle'
   }
+
+  dump () {
+    return []
+  }
 }
 
 class AINetDT extends AINet {
@@ -36,6 +40,18 @@ class AINetDT extends AINet {
     let stack = this._stack.toJS()
     // this._stack = this._stack.clear()
 
+    // stack.map(d => {
+    //   for (let dk in d) {
+    //     if (dk.startsWith('stat_')) {
+    //       d[dk] = Math.round(d[dk] / 5)
+    //     }
+    //   }
+
+    //   return d
+    // })
+
+    // console.log(stack[0])
+
     this.dt = new dt.DecisionTree({
       trainingSet: stack,
       categoryAttr: 'output',
@@ -49,6 +65,10 @@ class AINetDT extends AINet {
   fetch (input) {
     return this.dt.predict(input)
   }
+
+  dump () {
+    return this._stack.toJS()
+  }
 }
 
 class AINetC45 extends AINet {
@@ -56,6 +76,7 @@ class AINetC45 extends AINet {
     super()
     this.c45 = C45()
     // this.ignore = [...this.ignore, 'current_state']
+
 
     setTimeout(() => {
       // this.trainStack()
